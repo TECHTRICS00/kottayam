@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kottayam - Kerala's Hidden Gems</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2C5530;
+            background: 
+                linear-gradient(45deg, rgba(34, 139, 34, 0.1) 0%, rgba(0, 100, 0, 0.2) 100%),
+                radial-gradient(circle at 20% 80%, rgba(76, 175, 80, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 195, 74, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: 
+                linear-gradient(135deg, rgba(216, 232, 216, 0.8) 0%, rgba(76, 175, 80, 0.7) 100%),
+                url('./illikal.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #1B5E20;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-content {
+            z-index: 1;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            animation: slideUp 1.2s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            color: #1B5E20;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2E7D32;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #388E3C;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .location {
+            font-size: 1.2rem;
+            color: #1B5E20;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInNature {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes growLeaf {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .destinations {
+            padding: 6rem 0;
+            background: 
+                linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%),
+                url('https://www.transparenttextures.com/patterns/leaf.png');
+            background-size: cover, auto;
+            background-repeat: no-repeat, repeat;
+            backdrop-filter: blur(6px);
+            border-radius: 30px;
+            box-shadow: 0 8px 40px rgba(76, 175, 80, 0.15);
+            margin: 2rem 0;
+        }
+
+        .destinations .container {
+            background: rgba(255,255,255,0.85);
+            border-radius: 24px;
+            box-shadow: 0 4px 32px rgba(34,139,34,0.10);
+            padding: 2rem;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .destination-card {
+            border: 2px solid rgba(76, 175, 80, 0.2);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .destination-card:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.2);
+            transform: translateY(-15px) rotateX(5deg);
+        }
+
+        .destination-card::after {
+            content: "🌿";
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            font-size: 2.2rem;
+            opacity: 0;
+            transform: scale(0.7) rotate(-20deg);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+
+        .destination-card:hover::after {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .card-image {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            transform-origin: center;
+            transition: transform 0.5s ease;
+        }
+
+        .destination-card:hover .card-image {
+            transform: scale(1.1) translateZ(30px);
+        }
+
+        .location-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+            background: linear-gradient(135deg, #2E7D32, #43A047);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            transform: translateZ(20px);
+        }
+
+        .location-link:hover {
+            background: linear-gradient(135deg, #43A047, #2E7D32);
+            transform: translateZ(30px) scale(1.05);
+        }
+
+        .location-link .detail-icon {
+            margin-right: 0.5rem;
+            color: white;
+        }
+
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(0deg, rgba(46, 125, 50, 0.3), transparent);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .destination-card:hover .card-image::before {
+            opacity: 1;
+        }
+
+        .card-content {
+            padding: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-title {
+            background: linear-gradient(45deg, #2E7D32, #43A047);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .card-description {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .card-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 0.8rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            background: rgba(76, 175, 80, 0.2);
+            transform: translateX(5px);
+        }
+
+        .detail-icon {
+            color: #2E7D32;
+            margin-right: 0.8rem;
+            transform-origin: center;
+            animation: pulseIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2E7D32 0%, #43A047 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .location {
+                font-size: 1rem;
+            }
+
+            .destinations-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .card-details {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+                padding: 0 1rem;
+            }
+
+            .card-title {
+                font-size: 1.6rem;
+            }
+
+            .card-description {
+                font-size: 1rem;
+            }
+
+            .detail-item {
+                font-size: 0.9rem;
+            }
+
+            .footer {
+                padding: 3rem 1rem;
+            }
+
+            .footer h3 {
+                font-size: 1.8rem;
+            }
+
+            .footer p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .location {
+                font-size: 0.9rem;
+            }
+
+            .card-content {
+                padding: 1.5rem;
+            }
+
+            .footer h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .footer {
+            background: #111111;
+            color: #FFFFFF;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #333333, #666666, #333333);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+
+            .destinations-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .card-details {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Background images for destination cards */
+        .illaveezhapoonchira {
+            background-image: url('illa.jpeg');
+        }
+
+        .vagamon {
+            background-image: url('images.jpeg');
+        }
+
+        .poonjar {
+            background-image: url('poonjar.jpeg');
+        }
+
+        .illikal {
+            background-image: url('illikal.jpg');
+        }
+
+        .kumarakom {
+            background-image: url('in-and-around-kumarakom-kottayam.jpg');
+        }
+
+        .marmala {
+            background-image: url('marmala-waterfalls-kerala_20180430122850.jpg');
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 2rem 2rem 0 2rem;
+            padding: 0.7rem 2.2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(120deg, #e8f5e9 0%, #43A047 80%);
+            border: 2px solid #76c179;
+            border-radius: 30px;
+            box-shadow: 0 4px 16px rgba(76,175,80,0.10);
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s, border-color 0.3s;
+            position: relative;
+        }
+        .back-btn::before {
+            content: "🌿";
+            margin-right: 0.7em;
+            font-size: 1.2em;
+            vertical-align: middle;
+            animation: growLeaf 2s infinite;
+        }
+        .back-btn:hover {
+            background: linear-gradient(120deg, #c8e6c9 0%, #2E7D32 100%);
+            border-color: #83d487;
+            transform: translateY(-2px) scale(1.04);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Kottayam</h1>
+            <p>Kerala's Land of Letters, Legends & Natural Beauty</p>
+            <p class="hero-subtitle">Experience the enchanting destinations of God's Own Country</p>
+            <p class="location">9.5916° N, 76.5222° E | Kerala, India</p>
+        </div>
+    </section>
+
+    <section class="destinations">
+        <div class="container">
+            <h2 class="section-title">Famous Places in Kottayam</h2>
+            <a href="javascript:history.back()" class="back-btn">Back</a>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <div class="card-image illaveezhapoonchira"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Illaveezhapoonchira</h3>
+                        <p class="card-description">A breathtaking hill station with rolling meadows, pristine landscapes, and spectacular panoramic views. Perfect for trekking enthusiasts and nature photographers seeking untouched beauty.</p>
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span>30 km from Kottayam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🌡️</span>
+                                <span>Cool climate year-round</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">⭐</span>
+                                <span>Best sunrise/sunset views</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🥾</span>
+                                <span>Ideal for trekking</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=9.7157,76.8278" class="location-link" target="_blank">
+                            <span class="detail-icon">📍</span>
+                            Go to Location
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-image vagamon"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Vagamon</h3>
+                        <p class="card-description">A serene hill station blessed with lush green meadows, misty valleys, and sprawling tea plantations. Known for its pleasant climate and scenic beauty throughout the year.</p>
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span>35 km from Kottayam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🌿</span>
+                                <span>Tea gardens & meadows</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🏕️</span>
+                                <span>Camping adventures</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">❄️</span>
+                                <span>Pleasant weather</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=9.6913,76.9047" class="location-link" target="_blank">
+                            <span class="detail-icon">📍</span>
+                            Go to Location
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-image poonjar"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Poonjar Palace</h3>
+                        <p class="card-description">A magnificent 16th-century palace showcasing traditional Kerala architecture, royal artifacts, and antique collections that tell the story of the Poonjar dynasty's rich heritage.</p>
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span>25 km from Kottayam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🏛️</span>
+                                <span>16th-century architecture</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🎨</span>
+                                <span>Royal artifacts</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">⏰</span>
+                                <span>Open 9 AM - 5 PM</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=9.6744,76.8308" class="location-link" target="_blank">
+                            <span class="detail-icon">📍</span>
+                            Go to Location
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-image illikal"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Illikal Kallu</h3>
+                        <p class="card-description">A magnificent rock formation offering spectacular views of the Western Ghats. This natural wonder is popular among adventure enthusiasts and rock climbing aficionados.</p>
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span>40 km from Kottayam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🧗</span>
+                                <span>Rock climbing spot</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🌄</span>
+                                <span>Western Ghats views</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🥾</span>
+                                <span>Adventure trekking</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=9.7486,76.8419" class="location-link" target="_blank">
+                            <span class="detail-icon">📍</span>
+                            Go to Location
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-image kumarakom"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Kumarakom Backwaters</h3>
+                        <p class="card-description">A mesmerizing network of waterways, coconut groves, and emerald paddy fields. Famous for luxury houseboat cruises and the renowned Kumarakom Bird Sanctuary.</p>
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span>15 km from Kottayam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🚢</span>
+                                <span>Houseboat cruises</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🦅</span>
+                                <span>Bird sanctuary</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🐟</span>
+                                <span>Fresh seafood</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=9.6167,76.4333" class="location-link" target="_blank">
+                            <span class="detail-icon">📍</span>
+                            Go to Location
+                        </a>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="card-image marmala"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Marmala Waterfall</h3>
+                        <p class="card-description">A pristine waterfall cascading through dense tropical forests and rocky terrain. Perfect for nature lovers seeking tranquility and natural swimming pools.</p>
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span>45 km from Kottayam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🌊</span>
+                                <span>Natural swimming</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🌳</span>
+                                <span>Dense forest setting</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🥾</span>
+                                <span>Short trek required</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=9.7167,76.8833" class="location-link" target="_blank">
+                            <span class="detail-icon">📍</span>
+                            Go to Location
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Set body opacity to 1 when page loads
+        document.body.style.opacity = '1';
+
+        // Enhanced scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all destination cards
+        document.querySelectorAll('.destination-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const shapes = document.querySelectorAll('.shape');
+            
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.2;
+                shape.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
+<footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Kerala Travel in Frames | Discover Kottayam</p>
+        </div>
+    </footer>
